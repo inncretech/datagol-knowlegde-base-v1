@@ -8,9 +8,9 @@ import ImagePopup from '@site/src/components/ImagePopup';
 **USER GUIDE**
 
 
-**Embedding Guide for External Dashboards**
+#Embedding Guide for External Dashboards
 
-# 1. Introduction
+## 1. Introduction
 
 Embedding DataGOL dashboards into your application is designed to be simple. There's no BI engineering team to hire and no data warehouse to stand up first. Most customers go from zero to a live, authenticated, on-brand embed in **four steps** with DataGOL.
 
@@ -25,7 +25,7 @@ This document covers each step in detail: the prerequisites, integration methods
 | **3** | **Set up theming**<br />Match the embedded dashboard to your product's look and feel using the built-in Theme Editor: colors, fonts, tiles, and header, no code required. |
 | **4** | **Embed the dashboard**<br />Go live with a JS Widget script tag or a plain `<iframe>`, whichever fits your stack. Copy a link and you're done. |
 
-# 2. Prerequisites & Data Setup
+##  2. Prerequisites & Data Setup
 
 Before initializing external embedding for your dashboards, please ensure the following data and external dashboard setups are complete within your DataGOL Workspace.
 
@@ -69,7 +69,7 @@ Turn on sharing and retrieve your embed identifiers directly from the dashboard:
 
 - Use **Copy Link** to retrieve the appId and pageId (or dashboardId for the JS Widget) needed for the integration methods below.
 
-# 3. Integration using JS Widget (CDN Only)
+## 3. Integration using JS Widget (CDN Only)
 
 DataGOL supports several ways to embed a dashboard, depending on how much control your application needs over styling, navigation, and lifecycle events. All methods share the same prerequisites and server-to-server authentication process described in Section 4.
 
@@ -137,7 +137,7 @@ Two additional embedding options are available for teams that want tighter integ
 <ImagePopup src="/img/release_notes/2026/2026/sept/int-options.png" alt="integrate options" caption="integrate options" />
 
 
-# 4. Authentication Process (Across Integration Methods)
+## 4. Authentication Process (Across Integration Methods)
 
 The server-to-server authentication process ensures secure access to dashboards by validating user credentials with your external auth server. This flow is identical regardless of integration method; only the name of the token parameter differs (authToken for the iFrame URL, userToken for the JS Widget and other methods).
 
@@ -241,7 +241,7 @@ Because revalidation is continuous rather than a fixed token lifetime, revoking 
 
 *The 30-minute interval is fixed and is not currently configurable per tenant.*
 
-# 5. Theming Embedded Dashboards
+## 5. Theming Embedded Dashboards
 
 Embedded dashboards can be visually themed to match your application's look and feel.
 
@@ -259,7 +259,7 @@ From the Theme Editor you can customize tile titles, header backgrounds, title c
 
 
 
-# 6. Client Responsibilities & Error Handling
+## 6. Client Responsibilities & Error Handling
 
 **Responsibilities**
 
@@ -278,7 +278,7 @@ From the Theme Editor you can customize tile titles, header backgrounds, title c
 <ImagePopup src="/img/release_notes/2026/2026/sept/something-went-wrong.png" alt="something went wrong" caption="something went wrong" />
 
 
-# 7. Security Considerations
+## 7. Security Considerations
 
 - **HTTPS + Private Tunnel:** All sensitive data, such as the userToken, must be transmitted securely over HTTPS. In addition, the server-to-server authorization call supports a private network tunnel for enhanced security. The tunnel setup and configuration requirements are owned by the customer.
 
@@ -288,6 +288,6 @@ From the Theme Editor you can customize tile titles, header backgrounds, title c
 
 - **No Reused Tokens:** Use a separate, dedicated authorization token for DataGOL rather than your system's internal user auth token, since the token is passed through the URL or request headers.
 
-# 8. Contact and Support
+## 8. Contact and Support
 
 If you have any questions or need assistance with the integration process, please reach out to our technical support team at [support@datagol.ai](mailto:support@datagol.ai).
