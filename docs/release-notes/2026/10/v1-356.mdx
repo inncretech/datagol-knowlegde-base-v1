@@ -1,0 +1,22 @@
+---
+title: v1.0.356
+description: v1.0.356 Release notes October 2026
+sidebar_position: 2
+---
+
+
+**Date released: October 26, 2026**
+
+
+## Enhancements
+
+### BI & Dashboard
+- **Date Formats That Follow the Selected Timezone:** Dates in dashboards now display in the regional format of the selected timezone, for example MM/DD/YYYY for US timezones and DD/MM/YYYY for Australian timezones. This applies to filters, table and pivot widgets, Explore mode, and chart data points.
+- **Dashboard Links in Scheduled Emails:** When scheduling a dashboard email, users can now choose to include a link to the dashboard. Recipients can click it to open the live dashboard directly, and those without access see a clear "no access" message.
+
+### Workspace & Workbooks
+- **Much Faster Row Edits in Dynamic Workbooks:** Adding rows and editing cells in dynamic workbooks is now dramatically faster, dropping from around half a second to a few hundredths of a second per change, so editing feels like a spreadsheet. Changes show up immediately when the table reloads. Dashboard charts built on the workbook may take a second or two to reflect new totals.
+
+## Bug Fixes
+
+- Fixed an issue where the export pop-up on a download table widget stayed open after an export was requested, which could lead to duplicate exports. The pop-up now closes and shows a confirmation that the full dataset will be emailed, on both regular and embedded dashboards.

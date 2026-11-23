@@ -1,0 +1,29 @@
+---
+title: v1.0.355
+description: v1.0.355 Release notes October 2026
+sidebar_position: 3
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: October 23, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Follow-Up Suggestions in D.A.V.E.:** D.A.V.E. now ends its replies with up to three suggested follow-up questions, shown as chips under the latest reply. Click a chip to send it as the next message, or click its pencil icon to edit it in the message box first.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-follow-up.png" alt="dave follow up" caption="dave follow up" />
+
+- **Start a D.A.V.E. Conversation Without Selecting Data:** Users can now start a conversation with D.A.V.E. without picking any workbooks first. D.A.V.E. suggests data sources as the conversation goes and only reads a workbook once the user confirms it. Workbooks added during a conversation are now saved with it and stay visible.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-more-data.png" alt="dave more data" caption="dave more data" />
+
+
+- **Claude Fast Mode:** Faster "fast" versions of supported Claude models can now be selected for D.A.V.E. Fast mode is priced at twice the standard rate.
+- **Reply Duration Display:** The time an agent took to answer is now shown in seconds, minutes, or hours, depending on how long it took.
+- **More Reliable Agent Tool Calls:** When an agent sends a tool request with badly formed or extra details, the request is now repaired or rejected with a clear message the agent can act on, instead of failing outright. Agents with more than 10 tools now also narrow down to the most relevant ones on every model provider.
+
+## Bug Fixes
+
+- Fixed an issue where charts from D.A.V.E. and custom agents didn't appear when they were built on a workbook that wasn't selected at the start of the conversation, such as a reused saved BI workbook. The answer text appeared, but no chart. These charts now render for any workbook the user can view.
+- Fixed an issue where syncing data to a Postgres destination failed when the source had nested columns (arrays, structs, or maps), such as HubSpot deal pipeline stages. Nested values are now stored as JSON text in Append, Incremental Append, and Incremental Append + Dedup modes.

@@ -1,0 +1,18 @@
+---
+title: v1.0.337
+description: v1.0.337 Release notes September 2026
+sidebar_position: 5
+---
+
+
+**Date released: September 22, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **More Reliable and Secure AI Agents:** Scheduled custom agent runs now complete successfully, and viewers of embedded pages can now hold conversations with D.A.V.E. Long conversations no longer fail when a sign-in expires partway through, and answers stuck on a stalled connection now end with a clear error instead of an endless spinner. Error messages are clearer too: a turn stopped by a usage limit now names the limit, sign-in errors simply ask the user to sign in again, and every error includes a trace ID for faster support. Chart and SQL answers also start sooner, D.A.V.E. no longer mixes progress notes into its answers, and authentication and tenant isolation have been strengthened across the AI services.
+
+## Bug Fixes
+
+- Fixed an issue where SQL queries on workbooks with no connected data source could skip query validation. All such queries are now validated before they run.

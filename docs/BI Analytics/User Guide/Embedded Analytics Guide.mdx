@@ -1,0 +1,293 @@
+---
+title: Embedding Guide for External Dashboards
+sidebar_position: 2
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**USER GUIDE**
+
+
+**Embedding Guide for External Dashboards**
+
+# 1. Introduction
+
+Embedding DataGOL dashboards into your application is designed to be simple. There's no BI engineering team to hire and no data warehouse to stand up first. Most customers go from zero to a live, authenticated, on-brand embed in **four steps** with DataGOL.
+
+This document covers each step in detail: the prerequisites, integration methods: Direct URL (iFrame), JS Widget (CDN), and framework-specific components server-to-server authentication mechanisms, and the data flow between the browser, the DataGOL Server, and your external authentication server. This solution ensures the secure and seamless embedding of multiple dashboards directly into your application along with the navigation.
+
+**4 Easy Steps to Go Live**
+
+| | |
+|---|---|
+| **1** | **Set up authentication**<br />Configure server-to-server (S2S) token validation against your external auth server. No SDK-side session management required, DataGOL handles it. |
+| **2** | **Set up your filter**<br />Define one filter column to scope data by tenant and user. Set it once and every workbook on the dashboard enforces it automatically. |
+| **3** | **Set up theming**<br />Match the embedded dashboard to your product's look and feel using the built-in Theme Editor: colors, fonts, tiles, and header, no code required. |
+| **4** | **Embed the dashboard**<br />Go live with a JS Widget script tag or a plain `<iframe>`, whichever fits your stack. Copy a link and you're done. |
+
+# 2. Prerequisites & Data Setup
+
+Before initializing external embedding for your dashboards, please ensure the following data and external dashboard setups are complete within your DataGOL Workspace.
+
+**Data Setup**
+
+- **Organize Data Models:** Leverage the Lakehouse and Workbooks modules on the DataGOL platform to organize data models from various sources into your workspace
+<ImagePopup src="/img/release_notes/2026/2026/sept/oragnize-datamodel1.png" alt="oragnize datamodel1" caption="oragnize datamodel1" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/oragnize-datamodel2.png" alt="oragnize datamodel2" caption="oragnize datamodel2" />
+
+
+
+- **Verify Column Types:** Ensure all column types are set appropriately, as this directly impacts the Business Intelligence (BI) capabilities of your data.
+
+- **Protect Workbooks:** We highly recommend enabling "delete protection" for these workbooks from accidental deletions.
+
+**Dashboard Pages Setup**
+
+- Ensure your dashboard pages inside the workspace are successfully powered by the data present in your workbooks.
+
+- Once your dashboard pages are ready, pin them to the external dashboards.
+
+- **(Optional) Multi-Page Dashboards:** Bundle several related pages into a single External Dashboard link using the External Dashboard option. Users can then navigate between the bundled pages inside one embedded view, ideal for client portals that need access to multiple dashboards.
+
+**Configuration Requirements**
+
+To enable third-party sharing, the following configuration is strictly required:
+
+1.  **Filter Column:** You must specify a common column across all workbooks used on the dashboard to filter the data (e.g., filtering tenant or user id data for specific tenants on your platform). *Note: Only one filter column is allowed at this time, and it must be present in all relevant workbooks.*
+
+2.  **Domain:** The external website domain that will host the embedded dashboard must be configured for server-to-server authentication.
+
+3.  **External Auth Server:** You must set up an external API endpoint that DataGOL can query to validate the authentication token called userToken in the JS Widget and authToken in the iFrame URL. This endpoint should return a **200** response if authorized, or a **401** if unauthorized.
+
+**Enabling Third-Party Sharing**
+
+Turn on sharing and retrieve your embed identifiers directly from the dashboard:
+
+- On the dashboard, click **Settings** in the upper-right corner, then choose **Third Party Sharing**.
+
+- Configure the filter column and the external domain in the Third Party Sharing panel.
+
+- Use **Copy Link** to retrieve the appId and pageId (or dashboardId for the JS Widget) needed for the integration methods below.
+
+# 3. Integration using JS Widget (CDN Only)
+
+DataGOL supports several ways to embed a dashboard, depending on how much control your application needs over styling, navigation, and lifecycle events. All methods share the same prerequisites and server-to-server authentication process described in Section 4.
+
+**3.1 Direct URL (iFrame)**
+
+The simplest integration method, embed the dashboard's third-party sharing URL directly inside a standard `<iframe>` tag. No script or library is required.
+
+URL format:
+
+```text
+https://app.datagol.ai/thirdParty/app/[appId]/page/[pageId]?userId=[userId]&authToken=[authToken]&[filterColumnName]=[filterColumnValue]
+```
+
+Example:
+
+```text
+https://datagol.ai/thirdParty/app/app_g253321/page/page_p232243?userId=user_L454322&authToken=dg35Aqwfwlt890&department=HR
+```
+
+Embed the constructed URL:
+
+```html
+<iframe src="https://app.datagol.ai/thirdParty/app/YOUR_APP_ID/page/YOUR_PAGE_ID?userId=YOUR_USER_ID&authToken=YOUR_AUTH_TOKEN"
+title="DataGOL Dashboard"
+width="100%" height="100%"
+frameborder="0">
+</iframe>
+```
+
+**3.2 JS Widget (CDN)**
+
+Embed via a modern JavaScript API loaded from our CDN, gives you a JS handle to the widget for lifecycle control. Your appId and dashboardId can be found in the code snippet during embedding your dashboard.
+
+**Installation (HTML):**
+
+```html
+<script src="https://cdn.datagol.ai/embed.js"></script>
+```
+
+**Initialization:** add a container `<div>` and call window.DataGOL.dashboard.init():
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+<div id="my-dashboard"></div>
+<script src="https://cdn.datagol.ai/embed.js"></script>
+<script>
+const widget = window.DataGOL.dashboard.init({
+elementId: 'my-dashboard', // container element ID
+appId: 'YOUR_APP_ID', // your DataGOL application ID
+dashboardId: 'YOUR_DASHBOARD_ID', // dashboard to embed
+userToken: 'YOUR_USER_TOKEN', // authentication token
+// optional params (filters, userId) can be included here
+});
+</script>
+</body>
+</html>
+```
+
+**3.3 Other Integration Options**
+
+Two additional embedding options are available for teams that want tighter integration with a front-end framework: a **Data Attributes** HTML embedding method, and a **React / Next.js** component. Both authenticate the same way as the JS Widget. Reach out to [support@datagol.ai](mailto:support@datagol.ai) for the current snippet for your framework.
+
+<ImagePopup src="/img/release_notes/2026/2026/sept/int-options.png" alt="integrate options" caption="integrate options" />
+
+
+# 4. Authentication Process (Across Integration Methods)
+
+The server-to-server authentication process ensures secure access to dashboards by validating user credentials with your external auth server. This flow is identical regardless of integration method; only the name of the token parameter differs (authToken for the iFrame URL, userToken for the JS Widget and other methods).
+
+**External Auth Server Setup**
+
+You must set up an external auth API endpoint so DataGOL can validate the token before releasing data.
+
+- **API Endpoint Example:** https://domain.com/oauth/authorize
+
+- **Method:** POST
+
+- **Request Body (JSON):** sent as the raw POST body, ***not*** as URL query parameters.
+
+  - userId: Unique identifier for the user (Optional).
+
+  - filterColumnName: Unique identifier to filter data from the workbooks.
+
+- **Request Headers:**
+
+  - Content-Type: application/json.
+
+  - X-Auth-Token (or Authorization): The token used for authentication, sent during invocation (applicable for all integration methods).
+
+- **Expected Response Codes:**
+
+  - **200** Authorized
+
+  - **401** Unauthorized (or **500** for validation failures)
+
+**Sample API Call**
+
+```bash
+curl -v -X POST \
+-H 'X-Auth-Token: dg35Aqwfwlt890' \
+-H 'Content-Type: application/json' \
+-d '{"userId": "user_L454322", "filterColumnName": "HR"}' \
+'https://domain.com/oauth/authorize'
+```
+
+***Best Practice:** Use a separate, dedicated authorization token for DataGOL rather than your system's internal user auth token, as the token will be passed through the URL.*
+
+**Authentication Flow Overview**
+
+<ImagePopup src="/img/release_notes/2026/2026/sept/auth-flow.png" alt="auth flow" caption="auth flow" />
+
+
+
+
+1.  **Browser Layer:**
+
+    1.  **Step 1:** The user opens the URL (or page hosting the widget/iframe) containing an embedded DataGOL external dashboard.
+
+    2.  **Step 2:** The browser sends a request to the DataGOL Server to fetch the DataGOL external dashboard.
+
+2.  **DataGOL Server Layer:**
+
+    1.  **Step 3:** The DataGOL server retrieves the embedding configuration.
+
+    2.  **Step 4:** Based on the configuration, the DataGOL server determines the authentication method.
+
+        1.  If server-to-server authentication is specified, proceed with point 5.
+
+    3.  **Step 5:** The DataGOL Server sends an authentication request to the external auth server, including the required parameters (userId, userToken/authToken, filterColumnName).
+
+    4.  **Step 6:** Upon successful validation, the DataGOL server returns the External Dashboard information to the Browser.
+
+3.  **External Auth Server Layer:**
+
+    1.  **Step 7:** The external auth server validates the provided credentials.
+
+        1.  If Authorized, a 200 response code is returned to the DataGOL server.
+
+        2.  If validation fails, an error response with a 500 response code is returned to the DataGOL server.
+
+4.  **Browser Render:**
+
+    1.  **Step 8:** The browser receives the external dashboard related information.
+
+    2.  **Step 9:** The browser renders the DOM (or iframe), displaying the authenticated External Dashboard to the user.
+
+    3.  **Step 10:** The external dashboard displays a navigation side panel.
+
+5.  **Revalidation Layer:**
+
+    1.  **Step 11:** Every 30 minutes, the DataGOL Server repeats the authorization call to the external auth server with the current token and filter values.
+
+    2.  **Step 12:** On **200**, the session continues uninterrupted. On any other outcome, the embedded dashboard is torn down and replaced with the access-denied screen. Rendered data is cleared.
+
+**Session Lifecycle & Revalidation**
+
+| **Property**                  | **Behavior**                                                                                                       |
+|-------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Initial authorization**     | On dashboard load, before any data is released                                                                     |
+| **Revalidation interval**     | Every 30 minutes for the life of the session                                                                       |
+| **Session length**            | Unbounded while the embed remains open and revalidation succeeds                                                   |
+| **Revocation window**         | **≤ 30 minutes** from the point your endpoint begins returning **401**                                             |
+| **Behavior on failure**       | The rendered dashboard is torn down and its data cleared, not merely frozen. The access-denied screen replaces it. |
+| **Filter change mid-session** | Re-authorized before any further data is released; a failed check blocks the dashboard                             |
+
+Because revalidation is continuous rather than a fixed token lifetime, revoking a user in your own system revokes their dashboard. No token needs to expire first.
+
+*The 30-minute interval is fixed and is not currently configurable per tenant.*
+
+# 5. Theming Embedded Dashboards
+
+Embedded dashboards can be visually themed to match your application's look and feel.
+
+1.  Open your dashboard in the editor.
+
+2.  Click the settings icon in the top toolbar.
+
+3.  Select **Theme Editor** from the dropdown.
+
+From the Theme Editor you can customize tile titles, header backgrounds, title colors, font sizes, font weights, and subtitles; either by updating an existing theme or creating a new one.
+
+***Note:** theming is currently only available for Embedded Dashboards.*
+
+<ImagePopup src="/img/release_notes/2026/2026/sept/themed-emb-db.png" alt="themed emb db" caption="themed emb db" />
+
+
+
+# 6. Client Responsibilities & Error Handling
+
+**Responsibilities**
+
+- **Provide Auth API Details:** Ensure the DataGOL Server has access to your external auth API and that authorized hosts are enabled.
+
+- **Handle Dynamic Parameters:** Provide necessary details for filters and authentication precisely as outlined.
+
+**Error Handling**
+
+- **Authentication Failure:** If the external auth server rejects the request, the dashboards will not load and will show an access-denied error screen. Ensure proper user credentials and configuration are in place.
+<ImagePopup src="/img/release_notes/2026/2026/sept/error-handling.png" alt="error handling" caption="error handling" />
+
+
+
+- **DOM Construction Failure:** If required values (e.g., userToken, userId, filterColumnName) are missing, the link will fail to construct. Debug logs from the DataGOL Server will indicate any missing fields.
+<ImagePopup src="/img/release_notes/2026/2026/sept/something-went-wrong.png" alt="something went wrong" caption="something went wrong" />
+
+
+# 7. Security Considerations
+
+- **HTTPS + Private Tunnel:** All sensitive data, such as the userToken, must be transmitted securely over HTTPS. In addition, the server-to-server authorization call supports a private network tunnel for enhanced security. The tunnel setup and configuration requirements are owned by the customer.
+
+- **Token Expiry:** As a best practice, authentication tokens should have a short expiry time to reduce the risk of misuse.
+
+- **Validation:** Your external auth API must implement robust validation mechanisms to ensure secure access.
+
+- **No Reused Tokens:** Use a separate, dedicated authorization token for DataGOL rather than your system's internal user auth token, since the token is passed through the URL or request headers.
+
+# 8. Contact and Support
+
+If you have any questions or need assistance with the integration process, please reach out to our technical support team at [support@datagol.ai](mailto:support@datagol.ai).

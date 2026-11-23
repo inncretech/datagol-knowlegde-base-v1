@@ -1,0 +1,16 @@
+---
+title: v1.0.348
+description: v1.0.348 Release notes October 2026
+sidebar_position: 10
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: October 9, 2026**
+
+
+## Enhancements
+
+### Lakehouse
+- **Reverse ETL to SFTP:** Users can now send workbook data back out to an SFTP server as CSV files. Create a pipeline with a warehouse data source as the source and CSV as the destination format, then run it to deliver the data to SFTP. This makes it possible to pull data in from sources such as NetSuite, prepare it in a workbook, and send the results to downstream systems.
+<ImagePopup src="/img/release_notes/2026/2026/sept/sftp-csv.png" alt="SFTP CSV" caption="SFTP CSV" />

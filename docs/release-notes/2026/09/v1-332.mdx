@@ -1,0 +1,17 @@
+---
+title: v1.0.332
+description: v1.0.332 Release notes September 2026
+sidebar_position: 10
+---
+
+
+**Date released: September 10, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Faster, Clearer Custom Agent Responses:** Custom agents now answer much sooner, especially on follow-up questions after a pause, because setup steps run in parallel and workbook details are cached. While a tool runs, the agent shows a short plain-language note on what it's doing, and its step-by-step narration no longer appears inside the final answer. If the selected model fails and the agent switches to a fallback, the chat now names both models. Long answers are no longer cut short, and when a reply reaches the output limit, users now see a clear notice instead of a reply that stops with no explanation. Stopping a response now takes effect right away and keeps the partial answer, and long conversations no longer fail partway through with an authorization error.
+
+### Workspace & Workbooks
+- **App Workspaces Hidden from Workspace Lists:** Workspaces created for apps are now hidden from the regular and public workspace lists, so users only see the workspaces they actually work in. Existing workspaces aren't affected.

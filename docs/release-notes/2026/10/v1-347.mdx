@@ -1,0 +1,18 @@
+---
+title: v1.0.347
+description: v1.0.347 Release notes October 2026
+sidebar_position: 11
+---
+
+
+**Date released: October 8, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Lower-Cost Long Conversations and More Reliable Agent Tools:** Long conversations with custom agents on Claude models now cost less per turn, because earlier conversation history is cached instead of billed in full on every message. Knowledge base search now follows references between related documents, giving agents fuller context. File exports that fail to upload now show a clear error instead of silently producing no download. Custom agents can also run shell commands on files in their workspace, and D.A.V.E. can now run scripts in its analysis tool.
+
+## Bug Fixes
+
+- Fixed an issue where agents using workbook tools reported a failure after linking or unlinking records, deleting rows, columns, or views, or adding columns, even though the change had been saved. Agents no longer retry changes that already succeeded, which had been causing duplicate columns and confusing follow-up errors.

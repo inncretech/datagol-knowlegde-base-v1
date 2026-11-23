@@ -1,0 +1,28 @@
+---
+title: v1.0.351
+description: v1.0.351 Release notes October 2026
+sidebar_position: 7
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: October 14, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Introducing OrchX:** OrchX is DataGOL's agentic orchestration layer. It builds the semantic layer by creating pipelines and queries and allocating the infrastructure resources those pipelines need to run, working as an abstraction over both infrastructure and query code. Users describe the outcome they want in plain English, and OrchX builds, runs, and maintains the pipeline, from raw sources to dashboard-ready data, all on one platform.
+  - **Natural language to pipeline:** One prompt becomes a running pipeline. OrchX finds the right sources, plans the DAG, and writes the SQL.
+  - **Connect and move any data:** Sync data sources, SaaS apps, files, and APIs to any destination, on demand or on a schedule.
+  - **Bronze, Silver, and Gold layers:** Every pipeline is organized into raw, cleaned, and business-ready layers, with end-to-end lineage built in.
+  - **Review before it runs:** OrchX validates row counts, nulls, and joins on sample data, then shows you the plan to approve.
+  - **Self-healing pipelines:** Failures are retried, diagnosed, and fixed automatically, before they reach your dashboards.
+  - **Work with your files:** Upload documents directly to OrchX, and it reads and uses them throughout the entire workflow, even in long conversations.
+  - **Schedules in your timezone:** Set up, confirm, and review schedules in your own timezone. OrchX asks, confirms, and shows run times in local time, and you can still ask for UTC explicitly.
+
+
+<ImagePopup src="/img/release_notes/2026/2026/sept/orchx1.png" alt="orchx1" caption="orchx1" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/orchx1.png" alt="orchx2" caption="orchx2" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/orchx1.png" alt="orchx3" caption="orchx3" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/orchx1.png" alt="orchx4" caption="orchx4" />

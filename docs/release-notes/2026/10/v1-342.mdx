@@ -1,0 +1,27 @@
+---
+title: v1.0.342
+description: v1.0.342 Release notes October 2026
+sidebar_position: 15
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: October 1, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Dashboard Creation with DAVE:** DAVE can now build entire dashboard pages from a conversation. Describe what you want to see, and DAVE creates the dashboard for you, with no manual setup required.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-db.png" alt="DAVE db" caption="DAVE db" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/dashboard.png" alt="DAVE dashboard" caption="DAVE dashboard" />
+
+
+
+### BI & Dashboard
+- **Saved Filter Sets on Embedded Dashboards, Including Parameters:** Viewers of embedded and external dashboards can now save a filter set and apply it again later, the same way as on standard dashboards. Saved filter sets now also keep regular and dynamic parameter values, so applying a set brings back the filters exactly as they were saved.
+
+## Bug Fixes
+
+- Fixed an issue where most teammates were missing from the share list when sharing a D.A.V.E. thread, and some threads couldn't be shared at all. Any team member can now be invited to a thread without needing a Lakehouse role, names display correctly, and users who can't be added yet are shown with a clear reason, such as "Invite pending." Thread visibility settings (Private, Company, and Public) are now shown to all applicable users.
+- Fixed an issue where long-running SQL queries through the MCP query tool timed out after 30 seconds. Complex queries on large tables now have up to 10 minutes to finish.

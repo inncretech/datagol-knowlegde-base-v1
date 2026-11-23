@@ -1,0 +1,24 @@
+---
+title: v1.0.325
+description: v1.0.325 Release notes September 2026
+sidebar_position: 17
+---
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 1, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **DAVE Profiles:** Admins can now create Profiles that bundle a saved data scope (a workspace and its workbooks) with a scoped set of skills, and assign them to specific users or groups, for example a Finance profile for the finance team. When a conversation starts, DAVE loads the Profile's workbooks and only that Profile's skills, so users reach an answer without picking workbooks each time, and different personas get context suited to them. Users with a single Profile get it applied automatically, and users with no Profile see no change.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-profile.png" alt="dave profile" caption="dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/share-dave-profile.png" alt="share dave profile" caption="share dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/select-dave-profile.png" alt="select dave profile" caption="select dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/chat-dave-profile.png" alt="chat dave profile" caption="chat dave profile" />
+
+
+
+## Bug Fixes
+
+- Fixed several AppX publishing issues: republishing an app no longer resets its name, custom domain, or resource settings, and publishing no longer fails with a database error. After a custom domain is added, its DNS records (A record and CNAME) and verification status now display, and a domain can be added later without republishing.

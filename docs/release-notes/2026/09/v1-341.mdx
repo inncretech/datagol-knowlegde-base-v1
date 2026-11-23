@@ -1,0 +1,23 @@
+---
+title: v1.0.341
+description: v1.0.341 Release notes September 2026
+sidebar_position: 1
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 29, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **File Attachments in D.A.V.E. and Security Hardening:** D.A.V.E. can now read attached files, not just images, including Excel (.xlsx, .xls), CSV, TSV, JSON, Word (.docx, .doc), PowerPoint (.pptx), PDF, and plain text. Scanned PDFs are read using text recognition (OCR). Up to 10 images and 10 files can be attached per message, with a limit of 25 MB per file and 50 MB per message. A stopped response or a switch to a fallback model now shows as a warning instead of an error, and failed-step notices name the action and the reason. D.A.V.E. also reports correct row counts for SQL results, long answers are no longer cut off after an hour, and authentication, tenant isolation, and read-only SQL protections have been strengthened across the AI services.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-attach.png" alt="DAVE attach" caption="DAVE attach" />
+
+
+
+
+## Bug Fixes
+
+- Fixed an issue where frequent row updates to a workbook could slow down the platform for all users. Cache clearing after a row change is now much lighter, so workbooks stay responsive under heavy write activity.
