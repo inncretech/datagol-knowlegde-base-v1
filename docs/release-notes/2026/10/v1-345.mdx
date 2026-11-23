@@ -1,0 +1,14 @@
+---
+title: v1.0.345
+description: v1.0.345 Release notes October 2026
+sidebar_position: 13
+---
+
+
+**Date released: October 6, 2026**
+
+
+## Bug Fixes
+
+- Fixed an issue in the Share Knowledge Source dialog where some teammates were greyed out as "Already has access" even though the owner had never shared the connector with them and they couldn't open it. Others were blocked with "Needs Lakehouse role." Knowledge Sources now use their own sharing rules based on Copilot Hub roles, so anyone with a Copilot Hub Admin or Member role can be invited, and users without one are shown as "Needs Copilot Hub role."
+- Fixed an issue where the Knowledge Sources and MCP pages under AI → Customize were available to users without a Copilot Hub role. These pages now require a Copilot Hub Admin or Member role, and users without one no longer see the tabs or can open the pages directly by URL.

@@ -1,0 +1,34 @@
+---
+title: v1.0.321
+description: v1.0.321 Release notes August 2026
+sidebar_position: 4
+---
+
+
+**Date released: August 21, 2026**
+
+
+## Enhancements
+
+### AI
+- **Agent Memory, Model Fallback, and Charting Improvements:** Adds persistent agent memory across turns, automatic model fallback when a selected model fails, a configurable reasoning-effort level, and several improvements to how charts are generated and rendered.
+- **SQL Agent Support for Multiple Data Sources:** The SQL Agent can now query across multiple data sources within a single session instead of being limited to one source at a time.
+- **File Uploads for SQL Agent and DAVE:** Users can now upload files directly into SQL Agent and DAVE conversations, so those agents can reason over uploaded data rather than only pre-connected sources.
+- **Company Models Tab:** Added a Company Models tab where admins can view and manage existing model configurations and test connectivity to them directly.
+
+### RAG
+- **Workbook Index Overview Total Records KPI:** The Workbook Index Overview page now surfaces a Total Records KPI, giving users a quick count without opening the workbook itself.
+
+### Lakehouse
+- **Lemlist Connector:** Lemlist is now available as a data source connector, letting users pull Lemlist data into DataGOL workbooks like any other connected source.
+
+### Security
+- **Stronger OTP and Reset Token Generation:** System-generated OTPs, passwords, and reset/invite tokens are now generated using a cryptographically secure random source (CSPRNG) and carry a time-based expiry, closing a gap flagged under CASA 1.1.2.
+
+### Other
+- **MongoDB Connection Permission Check Timing:** Permission checks for MongoDB connections now run at the moment a data source is added, rather than later, so an unauthorized connection attempt is caught immediately.
+
+## Bug Fixes
+
+- Fixed an issue where an invalid or already-used password reset link could still reach the reset form. Reset links are now validated before the form is shown.
+- Fixed a bug that allowed the same MCP connection to be created more than once, which had been cluttering connection lists and causing confusion about which connection was active.

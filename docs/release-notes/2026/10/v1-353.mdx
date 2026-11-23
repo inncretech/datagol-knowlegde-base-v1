@@ -1,0 +1,23 @@
+---
+title: v1.0.353
+description: v1.0.353 Release notes October 2026
+sidebar_position: 5
+---
+
+
+**Date released: October 20, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Faster Custom Agents with On-Demand MCP Tools:** Custom agents now start answering sooner and work much more efficiently with large MCP tool sets. Instead of loading every tool's details on every call, agents now search for and use only the tools a request needs. Agents with many connected tools, such as large Composio setups, no longer send thousands of tool definitions with each message. Workbook and MCP server details are loaded only when needed, skills download only when the agent reads them, and independent reads now run together. The chat also shows more of what's happening: new progress steps such as "Finding the right tool", "Identifying required tools", and "Writing the HTML page", and how long each tool step took. Large workbooks keep their query tools. For safety, custom agents can no longer delete files.
+
+### Lakehouse
+- **LinkedIn Ads Connector:** LinkedIn Ads is now available as a data source, so users can sync ad performance data into DataGOL, including campaigns, campaign groups, creatives, and daily ad analytics by campaign and creative. Credentials are stored securely and masked, and invalid or expired credentials show a clear error on the pipeline.
+- **Google Search Console Connector:** Google Search Console is now available as a data source, so users can pull Search Console data, such as search analytics, sitemaps, and site information, into DataGOL through a pipeline.
+
+## Bug Fixes
+
+- Fixed an issue where embedded dashboards showed a "MUI X Missing license key" message on third-party pages.
+- Fixed an issue where approving a card that listed several actions, such as eight pipeline runs, only approved the first one, so users got a separate prompt for each. One approval now covers every action on the card, and only those actions. Approval cards now show clear descriptions and pipeline names, such as "Run gmail_to_lakehouse?", instead of internal tool names and raw data, and delete actions are clearly marked.

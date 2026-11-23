@@ -1,0 +1,21 @@
+---
+title: v1.0.336
+description: v1.0.336 Release notes September 2026
+sidebar_position: 6
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 18, 2026**
+
+
+## Enhancements
+
+### AppX
+- **Index Workbooks from the Knowledge Base Selection:** When choosing Knowledge Base sources for a Custom Agent, workbooks that haven't been indexed yet are now clearly marked as Not Indexed, with an option to sync or index them right there. Users can see the indexing status, and the workbook becomes available to the agent once indexing finishes, without leaving the page.
+<ImagePopup src="/img/release_notes/2026/2026/sept/KB-settings.png" alt="KB settings" caption="KB settings" />
+
+## Bug Fixes
+
+- Fixed an issue where saved views still applied filters and sorts on deleted or invalid columns, even though those rules no longer appeared in the Filters and Sorts panels. This could cause empty or incorrect grid results, loading errors, or failed downloads. These rules are now ignored automatically, and affected views recover without being edited or re-saved.
+- Fixed slow workbook loading and queries when Auto Join used the "has any of" condition, especially with comma-separated values. Joins now run much faster and return the same matches as before.

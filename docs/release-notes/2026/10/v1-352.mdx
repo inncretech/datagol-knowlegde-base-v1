@@ -1,0 +1,30 @@
+---
+title: v1.0.352
+description: v1.0.352 Release notes October 2026
+sidebar_position: 6
+---
+
+
+**Date released: October 15, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Use Attached Files Alongside Workbook Data in D.A.V.E.:** D.A.V.E. can now combine attached files with workbook data in the same answer. For example, it can compare workbook actuals against targets in an attached Excel file, or apply a KPI definition from an attached PDF, and it makes clear which values came from the file and which came from the workbook. Users can also attach a meeting transcript and ask D.A.V.E. to build the widgets it requests from the selected workbook data. D.A.V.E. says so when a requested metric isn't in the workbook instead of making one up. Up to 10 files can be attached per message (TXT, DOC, DOCX, PDF, XLS, XLSX, CSV, PPT, and PPTX), and attached files stay available for follow-up questions in the same conversation.
+- **Queue Messages While OrchX Is Working:** Users can now type and queue up to 10 more messages while OrchX is still working on a request. Queued messages are sent one at a time, in order, once the current task finishes. They can be edited, removed, reordered, or cleared before they're sent, and they can include file attachments. Queued messages wait while OrchX is asking a question or waiting for an approval, and they pause if the agent is stopped or a request fails, until the user resumes them. Queued messages are saved in the browser, so they survive a page refresh but are cleared on logout and aren't shared across browsers or devices.
+
+### Lakehouse
+- **Incremental Append + Dedup Sync Mode:** A new Incremental Append + Dedup sync mode is available for streams with a Postgres destination. Each run inserts new rows and updates existing ones by their unique key for only the incoming batch, instead of deduplicating the whole destination table afterward, so syncs finish faster as data grows.
+
+### Security
+- **Stronger Password Requirements:** Passwords must now be at least 8 characters long and include letters, numbers, and symbols.
+- **Sign Out of Other Sessions After a Password Change:** After a password is changed or reset, all other active sessions for that user are signed out.
+
+## Bug Fixes
+
+- Fixed an issue where legacy PowerPoint (.ppt) files showed as uploaded successfully, but D.A.V.E. then said it couldn't read them.
+- Fixed an issue where failed file uploads in D.A.V.E. only showed "Failed · Click to retry" without explaining why. The reason is now shown, such as an empty, password-protected, or invalid file.
+- Fixed an issue where D.A.V.E. couldn't look up a specific row in the middle of a large attached spreadsheet, and could only read the first or last rows or totals.
+- Fixed an issue where files above D.A.V.E.'s size limit showed as uploaded successfully but couldn't be read.
+- Fixed an issue where messages longer than 200 characters could disappear without being sent when starting a new OrchX conversation. New OrchX conversations now also get a short AI-generated title, falling back to the start of the first message if a title can't be generated. Titles that users rename themselves are kept.

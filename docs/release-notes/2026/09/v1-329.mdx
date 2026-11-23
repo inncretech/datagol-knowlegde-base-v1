@@ -1,0 +1,25 @@
+---
+title: v1.0.329
+description: v1.0.329 Release notes September 2026
+sidebar_position: 13
+---
+
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+
+**Date released: September 4, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Configurable Agent Activity Display:** Agent responses now show their thinking and execution activity at three detail levels. Minimal shows only the step currently running, Summary shows activity counts that expand into step titles, and Full Detail shows every step and log. The "Chain of Thoughts" label is replaced with a live summary such as "Read 3 files · 4 thoughts · Ran 5 commands". When a response finishes, the activity moves above the answer with a "Worked for [duration]" label, and progress commentary is no longer repeated inside the final response.
+<ImagePopup src="/img/release_notes/2026/2026/sept/response-summary.png" alt="response summary" caption="response summary" />
+
+
+
+
+## Bug Fixes
+
+- Fixed an issue where D.A.V.E. used only one data source when several were selected, so it described a selection the user hadn't made. D.A.V.E. now reads every selected data source and works out the SQL dialect for each query.

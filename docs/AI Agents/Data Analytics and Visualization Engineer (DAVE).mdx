@@ -64,6 +64,44 @@ This turns D.A.V.E. from a reporting tool into a decision-support tool — surfa
 
 Add a Memory Layer so D.A.V.E. understands your business terminology, shortcuts, and definitions — making every answer more personalized, consistent, and accurate over time. This is covered in detail below.
 
+## Whats New?
+### DAVE Profiles — Persona-Scoped Data & Context:
+
+Admins can create Profiles that bundle specific workbooks, skills, and context for D.A.V.E. and assign them to users or groups. Users with a single assigned Profile have it applied automatically, while others continue with the existing experience.
+  - **Saved data scope:** Each Profile stores a workspace and a set of workbooks. Selecting a Profile pre-loads that data, so users no longer have to find and pick workbooks at the start of every conversation. Users can still add or remove workbooks for a single conversation without changing the Profile.
+  - **Persona-specific skills:** Each Profile carries its own skills, kept in two lists. Preference skills cover how a persona wants answers shaped, such as a CFO who prefers pivot tables. Ontology skills cover business definitions and metric logic. Only the active Profile's skills load into the session, so a Finance user gets finance context without skills meant for other teams.
+  - **Flexible assignment:** Admins can create, edit, and delete Profiles at the company level and assign each one to users. A user can hold more than one Profile and switch between them, and both the data scope and the skills change with the switch.
+  - **Usage visibility:** Each D.A.V.E. run is attributed to its Profile in Cost & Trace, so admins can see how each Profile is being used.
+
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-profile.png" alt="dave profile" caption="dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/share-dave-profile.png" alt="share dave profile" caption="share dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/select-dave-profile.png" alt="select dave profile" caption="select dave profile" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/chat-dave-profile.png" alt="chat dave profile" caption="chat dave profile" />
+
+### Dashboard Creation with DAVE:
+
+DAVE can now build entire dashboard pages from a conversation. Describe what you want to see, and DAVE creates the dashboard for you, with no manual setup required.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-db.png" alt="DAVE db" caption="DAVE db" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/dashboard.png" alt="DAVE dashboard" caption="DAVE dashboard" />
+
+### File Attachments in D.A.V.E. and Security Hardening
+
+D.A.V.E. can now read attached files, not just images, including Excel (.xlsx, .xls), CSV, TSV, JSON, Word (.docx, .doc), PowerPoint (.pptx), PDF, and plain text. Scanned PDFs are read using text recognition (OCR). Up to 10 images and 10 files can be attached per message, with a limit of 25 MB per file and 50 MB per message. A stopped response or a switch to a fallback model now shows as a warning instead of an error, and failed-step notices name the action and the reason. D.A.V.E. also reports correct row counts for SQL results, long answers are no longer cut off after an hour, and authentication, tenant isolation, and read-only SQL protections have been strengthened across the AI services.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-attach.png" alt="DAVE attach" caption="DAVE attach" />
+
+### Follow-Up Suggestions in D.A.V.E.
+D.A.V.E. now ends its replies with up to three suggested follow-up questions, shown as chips under the latest reply. Click a chip to send it as the next message, or click its pencil icon to edit it in the message box first.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-follow-up.png" alt="dave follow up" caption="dave follow up" />
+
+### Start a D.A.V.E. Conversation Without Selecting Data
+Users can now start a conversation with D.A.V.E. without picking any workbooks first. D.A.V.E. suggests data sources as the conversation goes and only reads a workbook once the user confirms it. Workbooks added during a conversation are now saved with it and stay visible.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-more-data.png" alt="dave more data" caption="dave more data" />
+
+### Embed D.A.V.E. in Your Own Applications:** D.A.V.E. can now be embedded in third-party applications through an agent profile, so external users can analyze data in conversations without signing in to DataGOL. Each embed uses its own restricted account that can only view the workspaces in its profile. Every query is limited to the profile's workbooks and the embed session's filters, and a query is refused if those filters can't be applied. Signed-in embed users only see their own conversations.
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-embed.png" alt="dave embed" caption="dave embed" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/dave-embed2.png" alt="dave embed 2" caption="dave embed 2" />
+
+
 
 
 ## What is the Memory Layer?

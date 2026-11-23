@@ -1,0 +1,22 @@
+---
+title: v1.0.322
+description: v1.0.322 Release notes August 2026
+sidebar_position: 3
+---
+
+
+**Date released: August 25, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Uninterrupted Long-Running Agent Answers and DeepSeek V4 Flash:** DAVE and other agents now renew the user's session automatically during long, multi-step answers, so complex questions finish without failing partway through. If a session can't be renewed, the agent shows a clear sign-in prompt. Responses also start faster because credential lookups are now cached, and DeepSeek V4 Flash is available as a new selectable model.
+- **Custom MCP Servers with API Key Authentication:** Users can now add their own MCP server by entering its name, endpoint URL, API key, and header name, then testing the connection before saving. This lets providers such as Nylas and Unipile be connected and used in DataGOL agents without a dedicated integration.
+
+### Lakehouse
+- **Clearer Orchestration Run Flow:** The orchestration Run button now accurately reflects the run state after the run pop-up is closed, so users no longer get the false impression that a run is still in progress.
+
+## Bug Fixes
+
+- Fixed an issue where AI streaming requests could fail with an authentication error when the user's session was close to expiring. The session is now refreshed before the stream starts.

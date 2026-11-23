@@ -1,0 +1,28 @@
+---
+title: v1.0.335
+description: v1.0.335 Release notes September 2026
+sidebar_position: 7
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 17, 2026**
+
+
+## Enhancements
+
+### AppX
+- **Environment Variables for AppX Apps:** Users can now view and update environment variables for an AppX app. Values are stored securely, and saving a change automatically restarts the app so it picks up the new values without a full redeploy. When an app is deleted, its stored variables are removed as well.
+
+### Workspace & Workbooks
+- **Workspace Duplication with Data:** Duplicating a workspace can now copy its data as well as its structure. DataGOL recreates the folders and workbooks in the new workspace, then sets up and runs a pipeline that copies the data from each original workbook into its matching workbook. Users can track the copy's progress, and record counts in the new workspace match the original once it finishes.
+<ImagePopup src="/img/release_notes/2026/2026/sept/duplicate-ws.png" alt="Duplicate workspace" caption="Duplicate workspace" />
+
+
+
+## Bug Fixes
+
+- Fixed an issue where linking records between two workbooks in a tenant workspace showed records from the original workspace instead of the tenant workspace's own workbook.
+- Fixed an issue where importing a CSV into a tenant workspace failed with a temporary column error when a column was mapped to a Lookup column.
+- Fixed an issue where importing data into an existing workbook failed with a raw database error when a value was longer than 255 characters. Long text values now import correctly, and a value that can't be imported shows a clear error naming the affected column.
+- Fixed an issue where importing data into a Lookup column left some rows blank even though their values exactly matched records in the linked workbook. All matching rows are now linked consistently.

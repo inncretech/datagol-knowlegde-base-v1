@@ -1,0 +1,23 @@
+---
+title: v1.0.323
+description: v1.0.323 Release notes August 2026
+sidebar_position: 2
+---
+
+
+**Date released: August 27, 2026**
+
+
+## Enhancements
+
+### Lakehouse
+- **NetSuite Saved Search Support:** The NetSuite connector now supports Saved Searches, so users can pull the results of their existing NetSuite saved searches directly into DataGOL.
+
+### BI & Dashboard
+- **Total Count in Stacked Bar Chart Tooltips:** The tooltip on stacked bar charts now shows the total across all segments of a bar, along with the existing breakdown for each segment. Users can see the combined value at a glance without adding it up manually.
+
+## Bug Fixes
+
+- Fixed an issue where the timezone tooltip on embedded dashboards appeared in white text and couldn't be read.
+- Fixed an issue where the Report Link button still appeared on a widget after its report URL was removed. The button now only shows when a valid report URL is set.
+- Fixed an issue where DAVE could fail with a permission error when working out the SQL dialect for users without the Lakehouse Admin role.

@@ -1,0 +1,26 @@
+---
+title: v1.0.334
+description: v1.0.334 Release notes September 2026
+sidebar_position: 8
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 15, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Share Knowledge Base Connectors:** Knowledge Base connector owners can now share a connector with other users in their company from the connector's Share option, the same way workbooks and agents are shared. Owners assign each user a Viewer or Editor role, can change or remove access at any time, and shared users can use the connector in KB search and agent workflows based on their role. Users only see connectors they created or that were shared with them, and search results only include content from connectors they can access.
+<ImagePopup src="/img/release_notes/2026/2026/sept/share-kb.png" alt="share KB" caption="share KB" />
+
+
+### AppX
+- **Parse Time in Document Classification Results:** Document classification results now include how long parsing took for each document, so teams can track parsing performance as volume grows and tell when to scale up capacity.
+
+## Bug Fixes
+
+- Fixed an issue where dynamic parameter filters on dashboard pages didn't show newly added values from the source workbook, even though the widgets already showed the new data. The filter dropdown now includes the latest values.
+- Fixed an issue where zero values in a table widget's metric column didn't get heatmap coloring, unlike the other values in the same column.
+- Fixed several AI agent issues: a failed chart now shows the reason it failed instead of an unclear internal error, tool calls once again show a short note on what the agent is doing, image attachments work again on models reached through the AI gateway, and workbook sample previews no longer fail for some workbook types.

@@ -1,0 +1,16 @@
+---
+title: v1.0.354
+description: v1.0.354 Release notes October 2026
+sidebar_position: 4
+---
+
+
+**Date released: October 22, 2026**
+
+
+## Enhancements
+
+### Security
+- **Full Data Cleanup on Logout:** Logging out now clears all of DataGOL's data from the browser, including saved drafts, preferences, cached responses, and leftover sign-in cookies. Nothing from one session is left behind for the next person on a shared computer.
+- **Safer Redirects and Content Handling:** After signing in, DataGOL now only redirects to trusted DataGOL pages. Notification content is cleaned before it's displayed, and code generated from API specifications now runs in an isolated environment.
+- **Hardened Embedded Dashboard Script:** The script used for embedded dashboards now ships as a lean production build, with development markers, source maps, and debugging features removed.

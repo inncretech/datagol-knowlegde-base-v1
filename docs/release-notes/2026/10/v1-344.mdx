@@ -1,0 +1,14 @@
+---
+title: v1.0.344
+description: v1.0.344 Release notes October 2026
+sidebar_position: 14
+---
+
+
+**Date released: October 6, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **URL Exclusion Rules for Website Connectors:** Users can now set URL exclusion rules in a website connector's settings to keep specific pages or whole sections out of crawling and indexing, for example `https://www.example.com/fr/*` to skip a site's French pages. Rules support exact URLs and wildcard patterns, apply to pages found through internal links, and can be added or edited on an existing connector without recreating it. On the next sync, pages that were already indexed and now match a rule are removed from the knowledge base, so agents no longer retrieve them.

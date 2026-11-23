@@ -1,0 +1,25 @@
+---
+title: v1.0.349
+description: v1.0.349 Release notes October 2026
+sidebar_position: 9
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: October 12, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Automatic Conversation Names:** New conversations are now named automatically in the background based on what they're about. If a user renames a conversation before the automatic name arrives, their name is kept.
+
+### Workspace & Workbooks
+- **Scheduled CSV Exports for Workbooks:** Users can now have a workbook sent to them as a CSV on a recurring schedule, using the columns and filters of the view the schedule was created from. Each schedule keeps its own copy of those settings, so later changes to the view don't affect what it sends. Every recipient gets a separate email with their own download link, recipients can unsubscribe themselves in the app, and each run's row count and outcome are recorded. Scheduled exports are available from the workbook's Settings menu, next to Download, once **Enable Scheduled Workbook Exports** is turned on in Workbook Settings.
+<ImagePopup src="/img/release_notes/2026/2026/sept/wb-export.png" alt="Wb CSV" caption="Wb CSV" />
+
+
+## Bug Fixes
+
+- Fixed an issue where scheduled custom agent runs failed with an "Invalid access" error when the agent read workbooks through the workbook tool, even though the same agent worked when run by a person.
+- Fixed an issue where Playground queries that used a no-copy workbook failed with a syntax error when the SQL began with `WITH` followed by a line break.

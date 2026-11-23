@@ -1,0 +1,22 @@
+---
+title: v1.0.339
+description: v1.0.339 Release notes September 2026
+sidebar_position: 3
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 25, 2026**
+
+
+## Enhancements
+
+### BI & Dashboard
+- **Guest User Identification for Embedded Dashboards:** Embedded dashboards can now identify each viewer through a user identifier, such as an email, passed in by the host application. This identifier can be mapped to the right customer to control which data each viewer sees, and to track dashboard visits.
+<ImagePopup src="/img/release_notes/2026/2026/sept/guest-user.png" alt="guest user" caption="guest user" />
+
+
+- **Saved Preferences in Embedded Dashboards:** Viewers of embedded dashboards now keep their filter and timezone selections across sessions. Their preferences are saved against their user ID from the embed's sign-in token and reapplied automatically when they return, instead of resetting to the defaults.
+
+### RAG
+- **Legacy Office Files in Knowledge Base Indexing:** Knowledge Base connectors can now index legacy Office files such as .doc attachments, which previously failed to process. When a file can't be indexed, the job error now explains why instead of showing an unclear internal error.

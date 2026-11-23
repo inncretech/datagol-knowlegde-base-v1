@@ -1,0 +1,24 @@
+---
+title: v1.0.338
+description: v1.0.338 Release notes September 2026
+sidebar_position: 4
+---
+
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 23, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **Customizable Embedded Agent Chat:** Teams embedding a DataGOL AI agent on their website can now customize the chat's look to match their brand, giving visitors a polished, on-brand chat experience. The "Powered by DataGOL" attribution remains visible on embedded agents.
+<ImagePopup src="/img/release_notes/2026/2026/sept/customize-ui.png" alt="Customize UI" caption="Customize UI" />
+<ImagePopup src="/img/release_notes/2026/2026/sept/custom-agent-ui.png" alt="Customize agent UI" caption="Customize agent UI" />
+
+
+- **Recovered Tool Errors Moved to Agent Activity:** When a step fails while D.A.V.E. is answering but the agent recovers and still gives a complete answer, the error banner no longer appears above the answer. Instead, the failure is shown in the agent's activity steps next to the step it belongs to, with the tool name and reason. Errors that need the user to act, such as signing in again, still appear prominently in the main view.
+
+## Bug Fixes
+
+- Fixed an issue where a single failed tool call, such as a web search with an incomplete query, stopped an entire custom agent run with no answer. The agent now sees the error, corrects its request or continues without that tool, and shows a short notice of which step failed.

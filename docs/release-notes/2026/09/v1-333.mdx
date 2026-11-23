@@ -1,0 +1,19 @@
+---
+title: v1.0.333
+description: v1.0.333 Release notes September 2026
+sidebar_position: 9
+---
+
+
+**Date released: September 14, 2026**
+
+
+## Enhancements
+
+### Lakehouse
+- **Updated Lemlist Connector Authentication:** The Lemlist connector now connects with a username and password instead of a single API key, with an optional start date to control how far back data is pulled. The password is masked whenever connection details are viewed.
+
+## Bug Fixes
+
+- Fixed an issue where deployed AppX apps on AWS-hosted environments couldn't be opened because the browser kept redirecting and showed a "too many redirects" error.
+- Fixed an issue where attaching an image while using an OpenRouter model caused the request to fail and switch to a fallback model. The response now completes on the model the user selected.

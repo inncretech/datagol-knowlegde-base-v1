@@ -1,0 +1,26 @@
+---
+title: v1.0.319
+description: v1.0.319 Release notes August 2026
+sidebar_position: 6
+---
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: August 19, 2026**
+
+
+## Enhancements
+
+### AI
+- **Image Attachments in DAVE and SQL:** Agent chats now support image attachments as part of the conversation. DAVE and SQL Agent can now work directly with uploaded files. Drop in a file, compare it against your workbook or database, and ask the agent to analyze, visualize, or find the story in your data. Uploaded files will be used as context for your agent.
+<ImagePopup src="/img/release_notes/2026/2026/August/dave-attachment.png" alt="Dave Attachment" caption="Dave Attachment" />
+- **New Page Creation from DAVE Agent Thread:** Users can now create a new page directly from within a DAVE Agent conversation thread, without leaving the thread to start a page from Dashboards.
+<ImagePopup src="/img/release_notes/2026/2026/August/dave-db-1.png" alt="dave dashboard creation" caption="dave dashboard creation" />
+<ImagePopup src="/img/release_notes/2026/2026/August/dave-db-2.png" alt="Dave dashboard 2" caption="Dave dashboard 2" />
+
+## Bug Fixes
+
+- Fixed an issue where the SQL agent returned an application error instead of a usable response under certain conditions. Queries that previously failed outright now complete normally.
+- Resolved an issue where view-only users could open a custom agent's configuration screen from Explore and other entry points. Access is now correctly restricted to non-viewer roles.
+- Fixed an issue where a pipeline DAG run could be marked COMPLETED prematurely when a node had multiple child jobs finishing at nearly the same time. The completion check now waits for every child job to report in.
+- Resolved a bug where orchestration status could display "Completed" in the UI while the underlying pipeline was still actively running. Status now reflects the pipeline's real execution state.
+- Fixed an issue where Custom Agent responses returned as JSON were received correctly but not rendered in the UI. JSON responses are now parsed and displayed properly.

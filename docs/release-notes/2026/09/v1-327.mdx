@@ -1,0 +1,33 @@
+---
+title: v1.0.327
+description: v1.0.327 Release notes September 2026
+sidebar_position: 15
+---
+import ImagePopup from '@site/src/components/ImagePopup';
+
+**Date released: September 3, 2026**
+
+
+## Enhancements
+
+### AI Agents
+- **More Reliable D.A.V.E. Charts and Widgets:** D.A.V.E. can now use far more of the visualizer's options, including colors, number formatting, footers, indicators, heatmaps, pivot tables, and the full range of chart types, configured the same way the product's own controls set them. Widget configurations are now checked before they're sent, so a chart the renderer can't draw is caught up front instead of appearing incorrectly. The text D.A.V.E. writes beside a chart also now matches what's shown.
+
+### BI & Dashboard
+- **Import/Export Dashboards:** Users can now export a dashboard as a JSON file and import it into another workspace that has a compatible workbook. Pages, layout, widgets, chart formatting, page- and widget-level filters, drill-downs, parameters, dynamic parameters, BI workbooks, and BI formulas all carry over, so dashboards can be copied across workspaces without rebuilding them by hand.
+<ImagePopup src="/img/release_notes/2026/2026/sept/import-export-db.png" alt="import export db" caption="import export db" />
+
+- **Multi-Level Sorting in Table and Pivot Table Widgets:** Table and Pivot Table widgets now support a secondary sort, each with its own ascending or descending order, for example Campaign A–Z, then Spend high to low within each campaign. The first column selected becomes the primary sort, and the sort settings are kept when the widget reloads.
+<ImagePopup src="/img/release_notes/2026/2026/sept/second-sorting.png" alt="second sorting" caption="second sorting" />
+
+- **Top/Bottom N Independent of Display Sort:** Top/Bottom N now picks rows by their ranking column, separately from how the table is sorted for display. "Top 10 by Revenue" sorted A–Z now shows the 10 highest-revenue rows in alphabetical order, not the first 10 names alphabetically. Tied values also return in the same order on every load.
+
+### Workspace & Workbooks
+- **Separate Query for Table Downloads and Embedded Pages:** Pipeline tables, including BI workbook tables, can now have a dedicated embed query used for raw data downloads and embedded pages, separate from the materialized query that powers the workbook view. Downloads run faster and no longer have to share the workbook's query, and tables without an embed query keep their current behavior.
+
+## Bug Fixes
+
+- Fixed an issue where heatmap colors and "% of total" values in table widgets were calculated only from the rows on the current page, so they changed from page to page. Both are now calculated over the full filtered dataset.
+- Fixed an issue where the Top N limit on a table widget (for example, Top 1000) was ignored and more rows were returned.
+- Fixed an issue where Show as Table on a chart with a row limit loaded every underlying record. The table now shows the same limited result as the chart.
+- Fixed an issue where a table limited by Top/Bottom N still showed the full table's row count, column summaries, and export contents. All three now reflect only the capped rows, and scrolling no longer loads rows past the cap.
